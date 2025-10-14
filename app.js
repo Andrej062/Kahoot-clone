@@ -16,8 +16,13 @@ app.get('/', (req, res) => {
 });
 
 app.get('/question', (req, res) => {
-    const rows = db.prepare('SELECT * FROM questions').all();
-    res.json(rows);
+    try {
+        const rows = db.prepare('SELECT * FROM questions').all();
+        res.json(rows);
+    } catch (err) {
+        console.error('Database error:', err.message);
+        res.status(500).json({ error: err.message });
+    }
 });
 
 app.listen(3000, () => {
