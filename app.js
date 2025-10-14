@@ -15,9 +15,9 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.get('/question', (req, res) => {
+app.get('/member', (req, res) => {
     try {
-        const rows = db.prepare('SELECT * FROM questions').all();
+        const rows = db.prepare('SELECT name, lastname FROM member').all();
         res.json(rows);
     } catch (err) {
         console.error('Database error:', err.message);
