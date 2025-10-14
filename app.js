@@ -15,8 +15,8 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-app.get('/member', (req, res) => {
-    const rows = db.prepare('SELECT * FROM member').all();
+app.get('/question', (req, res) => {
+    const rows = db.prepare('SELECT * FROM questions').all();
     res.json(rows);
 });
 
